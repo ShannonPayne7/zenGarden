@@ -2,14 +2,25 @@
     .wrapper {
         display: inline;
     }
-    
+    .page-wrapper header {
+        padding-bottom: 0;
+    }
+    .intro h1 {
+        font-size: 2.5rem;
+    }
+    .summary {
+        margin: 0;
+    }
+    .summary p {
+        margin: .5rem 0;
+    }
     .page-wrapper {
         display: grid;
         grid-template-columns: 1fr 3fr 1fr;
         grid-template-rows: auto;
         //row-gap: 20px;
         //column-gap: 20px;
-        border: 2px solid red;
+        //border: 2px solid red;
     }
     .intro {
         grid-column: 1 / 4;
@@ -29,7 +40,15 @@
 
     .sidebar {
         grid-column: 3 / 3;
-        grid-row: 3 / 2;
+        grid-row: 2 / 2;
+        margin-top: -25rem;;
         border: 5px solid lawngreen;
+    }
+}
+
+@media only screen and (min-width: 70.9375em) {
+    .summary p:first-child {
+        font-size: 1.2rem;
+        
     }
 }

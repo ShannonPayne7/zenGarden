@@ -22,6 +22,29 @@ $alert: $color-3; // Burnt Umber
 
 $primary-font: 'Merriweather', serif;
 $secondary-font: 'Harrington', sans-serif;
+$body-font: 'Helvetica', sans-serif;
+
+.page-wrapper {
+  font-family: $body-font;
+}
+
+.intro h1, .intro h2 {
+  font-family: $secondary-font;
+  color: $color-3;
+}
+
+.summary {
+  padding-left: .5rem;
+}
+
+.summary p:first-child {
+  font-size: 1.1rem;
+}
+
+.summary p:nth-child(2) {
+  font-size: .8rem;
+}
+
 .sidebar {
   background: ivory;
   border-radius: 10px;
@@ -34,7 +57,6 @@ ul {
 
 ul li {
   padding-bottom: 0.5em;
-  font-family: $primary-font;
   text-decoration: none;
 }
 li {

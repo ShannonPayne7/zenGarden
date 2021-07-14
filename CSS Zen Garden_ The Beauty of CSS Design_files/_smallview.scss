@@ -1,9 +1,20 @@
+@mixin  piano-shadow {
+    transform: scale(.96) translateX(18px);
+    box-shadow: 0 -5px 5px -5px #0d1821, 
+              0 5px 5px -5px #0d1821, 
+              -5px 0 5px -5px #0d1821;
+}
+@mixin animate-keys {
+    transition: 300ms linear;
+    animation: bounce 1.2s ease-out 1;
+}
+
 .wrapper {
     display: flex;
 }
 
 .intro {
-    border: 3px solid plum;
+    //border: 3px solid plum;
     display: grid;
     grid-template-columns: 150px 1fr;
     grid-template-rows: repeat(auto-fit, minmax(0, 1fr));
@@ -13,95 +24,163 @@
     "preamble preamble"
     ;
 }
+.intro div:last-child {
+    @include animate-keys;
+}
+.intro div:last-child:hover {
+    @include piano-shadow;
+  }
 
 .intro h1 {
-    padding: 0;
+    padding: 0 0 .5rem .5rem;
     margin: 0;
-}
-.intro h2 {
-    padding: 0;
+  }
+  .intro h2 {
+    padding-left: .5rem;
     margin: 0;
-}
+  }
 
 .intro::before {
     content: url(images/zenGardenLogo_3_150.jpg);
     grid-area: logo;  
-}
+  }
 
 header {
     grid-area: title;
-    border: 2px solid fuchsia;
+    //border: 2px solid fuchsia;
     display: flex;
     flex-direction: column;
 }
 .summary {
     grid-area: demo;
-    border: 3px solid blue;
+    //border: 3px solid blue;
     padding: 0;
-    margin: -1rem 0 0;
+    margin: 0;
+}
+
+.summary p {
+    margin-bottom: 0;
+    margin-top: 0;
 }
 
 .preamble {
     grid-area: preamble;
-    border: 3px solid brown;
+    border-top: 2px solid black;
+    height: 25rem;
+    padding: 0 0.5rem 3.5rem 0.5rem;
+    animation-delay: 3s;
 }
 
 .main {
-    border: 5px solid yellow;
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: auto;
-    //gap: 20px;
-    grid-template-areas: 
-    ". explain explain explain explain "
-    "part part part part part"
-    ". benefits benefits benefits benefits"
-    "require require require require require"
-    ". . footer footer ."
-    ". contentinfo contentinfo . .";
-}
-
-.explanation {
-    position: relative;
-    z-index: -1;
+    // border: 5px solid yellow;
+     display: grid;
+     grid-template-columns: repeat(5, 1fr);
+     grid-template-rows: auto;
+     //gap: 20px;
+     grid-template-areas: 
+     ". explain explain explain explain "
+     "part part part part part"
+     ". benefits benefits benefits benefits"
+     "require require require require require"
+     ". . footer footer ."
+     ". contentinfo contentinfo . .";
+ }
+ 
+ .explanation {
+     z-index: 1;
+     min-height: 18rem;
+     color: white;
+     margin-top: -7rem;
+     padding: 0 0.5rem;
+     grid-area: explain;
+    // border: 2px solid fuchsia;
+     justify-self: center;
+    /* background-color: rgba(129, 129, 129, 0.3); */
+    background-color: black;
+    animation-delay: 2s;
+ }
+ 
+ .participation {
+     min-height: 25rem;
+     height: max-content;
+     margin-top: -10rem;
+     padding: 9rem 0.5rem 6rem 0.5rem;
+     grid-area: part;
+     border-top: 2px solid black;
+     animation-delay: 4s;
+    // border: 4px solid aquamarine;
+ }
+ 
+ .benefits {
+     z-index: 1;
+     min-height: 18rem;
+     margin-top: -7rem;
+     padding: 0 0.5rem;
+     grid-area: benefits;
+    // border: 2px solid black;
+    /* background-color: rgba(129, 129, 129, 0.3); */
     color: white;
-    margin-top: -7rem;
-    grid-area: explain;
-    border: 2px solid black;
-    justify-self: center;
-   /* background-color: rgba(129, 129, 129, 0.3); */
-   background-color: black;
-}
+    background-color: black;
+    animation-delay: 5s
+ }
+ .requirements {
+     //height: 25rem; //took height off this one so it auto-expands to fit text
+     margin-top: -9rem;
+     padding: 8rem 0.5rem 0 0.5rem;
+     grid-area: require;
+     border-top: 2px solid black;
+     border-bottom: 2px solid black;
+     animation-delay: 1s;
+    // border: 2px solid green;
+ }
+ .requirements [role=contentinfo] {
+     grid-area: contentinfo;
+     text-align: center;
+     //border: 3px solid red;
+ }
 
-.participation {
-    position: absolute;
-    width: 97%;
-    margin-top: 0;
-    grid-area: part;
-    border: 2px solid black;
-}
+ .main div {
+    @include animate-keys;
+ }
+ .main div:hover {
+    @include piano-shadow;
+  }
 
-.benefits {
-    position: relative;
-    margin-top: 3rem;
-    grid-area: benefits;
-    border: 2px solid black;
-   /* background-color: rgba(129, 129, 129, 0.3); */
-   color: white;
-   background-color: black;
-}
-.requirements {
-    position: relative;
-    
-    margin-top: -4.5rem;
-    grid-area: require;
-    border: 2px solid black;
-}
-.requirements [role=contentinfo] {
-    grid-area: contentinfo;
-    text-align: center;
-    border: 3px solid red;
-}
+@keyframes bounce {
+    0% {
+    transform: scale(1);
+    }
+    10% {
+      transform: scale(.98);
+    }
+    20% {
+      transform: scale(.96);
+    }
+    30% {
+      transform: scale(.98);
+    }
+    40% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1);
+    }
+    60% {
+      transform: scale(.98);
+    }
+    70% {
+      transform: scale(.96);
+    }
+    80% {
+      transform: scale(.98);
+    }
+    90% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
 
 footer {
     grid-area: footer;
@@ -109,4 +188,16 @@ footer {
 
 .page-wrapper {
     display: block;
+}
+
+@media only screen and (min-width: 44.375em) {
+    .summary {
+        margin: 1rem 0;
+    }
+    .summary p:nth-child(2) {
+        margin-top: .3rem;
+      }
+    .intro h1 {
+        font-size: 2rem;
+    }
 }
