@@ -1,203 +1,307 @@
+
 @mixin  piano-shadow {
-    transform: scale(.96) translateX(18px);
-    box-shadow: 0 -5px 5px -5px #0d1821, 
-              0 5px 5px -5px #0d1821, 
-              -5px 0 5px -5px #0d1821;
+  transform: scale(.96) translateX(18px);
+  box-shadow: 0 -5px 5px -5px #0d1821, 
+            0 5px 5px -5px #0d1821, 
+            -5px 0 5px -5px #0d1821;
 }
 @mixin animate-keys {
-    transition: 300ms linear;
-    animation: bounce 1.2s ease-out 1;
+  transition: 300ms linear;
+  animation: bounce 2s ease-out 1;
+}
+
+@mixin piano-image {
+background-image: url(images/piano2.png);
+content: "";
+background-size: contain;
+background-repeat: no-repeat;
+width: 2.5rem;
+height: 2.5rem;
+display: inline-block;
 }
 
 .wrapper {
-    display: flex;
+  display: flex;
 }
 
 .intro {
-    //border: 3px solid plum;
-    display: grid;
-    grid-template-columns: 150px 1fr;
-    grid-template-rows: repeat(auto-fit, minmax(0, 1fr));
-    grid-template-areas:
-    "logo title" 
-    "logo demo"
-    "preamble preamble"
-    ;
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  grid-template-rows: repeat(auto-fit, minmax(0, 1fr));
+  grid-template-areas:
+  "logo title" 
+  "logo demo"
+  "preamble preamble";
 }
+
 .intro div:last-child {
-    @include animate-keys;
+  @include animate-keys;
+  animation-delay: 1.8s;
 }
+
 .intro div:last-child:hover {
-    @include piano-shadow;
-  }
+  @include piano-shadow;
+}
 
 .intro h1 {
-    padding: 0 0 .5rem .5rem;
-    margin: 0;
-  }
-  .intro h2 {
-    padding-left: .5rem;
-    margin: 0;
-  }
+  padding: 0 0 .5rem .5rem;
+  margin: 0;
+}
+
+.intro h2 {
+  padding-left: .5rem;
+  margin: 0;
+}
 
 .intro::before {
-    content: url(images/zenGardenLogo_3_150.jpg);
-    grid-area: logo;  
-  }
+  content: url(images/zenGardenLogo_3_150.jpg);
+  grid-area: logo;  
+}
 
 header {
-    grid-area: title;
-    //border: 2px solid fuchsia;
-    display: flex;
-    flex-direction: column;
+  grid-area: title;
+  display: flex;
+  flex-direction: column;
 }
 .summary {
-    grid-area: demo;
-    //border: 3px solid blue;
-    padding: 0;
-    margin: 0;
+  grid-area: demo;
+  padding: 0;
+  margin: 0;
 }
 
 .summary p {
-    margin-bottom: 0;
-    margin-top: 0;
+  margin-bottom: 0;
+  margin-top: 0;
 }
 
 .preamble {
-    grid-area: preamble;
-    border-top: 2px solid black;
-    height: 25rem;
-    padding: 0 0.5rem 3.5rem 0.5rem;
-    animation-delay: 3s;
+  grid-area: preamble;
+  border-top: 2px solid black;
+  height: 25rem;
+  padding: 5rem 2rem 6rem 2rem;
+  background-color: $color-7;
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+  background-color: $color-7;
 }
 
 .main {
-    // border: 5px solid yellow;
-     display: grid;
-     grid-template-columns: repeat(5, 1fr);
-     grid-template-rows: auto;
-     //gap: 20px;
-     grid-template-areas: 
-     ". explain explain explain explain "
-     "part part part part part"
-     ". benefits benefits benefits benefits"
-     "require require require require require"
-     ". . footer footer ."
-     ". contentinfo contentinfo . .";
- }
- 
- .explanation {
-     z-index: 1;
-     min-height: 18rem;
-     color: white;
-     margin-top: -7rem;
-     padding: 0 0.5rem;
-     grid-area: explain;
-    // border: 2px solid fuchsia;
-     justify-self: center;
-    /* background-color: rgba(129, 129, 129, 0.3); */
-    background-color: black;
-    animation-delay: 2s;
- }
- 
- .participation {
-     min-height: 25rem;
-     height: max-content;
-     margin-top: -10rem;
-     padding: 9rem 0.5rem 6rem 0.5rem;
-     grid-area: part;
-     border-top: 2px solid black;
-     animation-delay: 4s;
-    // border: 4px solid aquamarine;
- }
- 
- .benefits {
-     z-index: 1;
-     min-height: 18rem;
-     margin-top: -7rem;
-     padding: 0 0.5rem;
-     grid-area: benefits;
-    // border: 2px solid black;
-    /* background-color: rgba(129, 129, 129, 0.3); */
-    color: white;
-    background-color: black;
-    animation-delay: 5s
- }
- .requirements {
-     //height: 25rem; //took height off this one so it auto-expands to fit text
-     margin-top: -9rem;
-     padding: 8rem 0.5rem 0 0.5rem;
-     grid-area: require;
-     border-top: 2px solid black;
-     border-bottom: 2px solid black;
-     animation-delay: 1s;
-    // border: 2px solid green;
- }
- .requirements [role=contentinfo] {
-     grid-area: contentinfo;
-     text-align: center;
-     //border: 3px solid red;
- }
+   display: grid;
+   grid-template-columns: repeat(5, 1fr);
+   grid-template-rows: auto;
+   grid-template-areas: 
+   ". explain explain explain explain "
+   "part part part part part"
+   ". benefits benefits benefits benefits"
+   "require require require require require"
+   "footer footer footer footer footer"
+   ". contentinfo contentinfo . ."; 
+}
 
- .main div {
-    @include animate-keys;
- }
- .main div:hover {
-    @include piano-shadow;
+.explanation {
+   z-index: 1;
+   min-height: 18rem;
+   color: white;
+   margin-top: -7rem;
+   padding: 1rem 2.5rem 0 2rem ;
+   grid-area: explain;
+   justify-self: center;
+  background-color: $color-2;
+}
+
+.participation {
+   min-height: 25rem;
+   height: max-content;
+   margin-top: -10rem;
+   padding: 11rem 5rem 6rem 2rem;
+   grid-area: part;
+   border-top: 2px solid black;
+   background-color: $color-7;
+}
+
+.benefits {
+   z-index: 1;
+   min-height: 18rem;
+   margin-top: -7rem;
+   grid-area: benefits;
+  color: white;
+  background-color: $color-2;
+  padding: 1rem 2rem 0 2rem;
+}
+
+.requirements {
+   //height: 25rem; //took height off this one so it auto-expands to fit text
+   margin-top: -9rem;
+   padding: 8rem 5rem 0 2rem;
+   grid-area: require;
+   border-top: 2px solid black;
+   border-bottom: 2px solid black;
+   background-color: $color-7;
+}
+
+.requirements [role=contentinfo] {
+   grid-area: contentinfo;
+   text-align: center;
+}
+
+.main div {
+  @include animate-keys;
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+}
+
+.main div:hover {
+  @include piano-shadow;
+}
+
+.main div:first-child {
+  animation-delay: 1.1s;
+  }
+
+  .main div:nth-child(2) {
+  animation-delay: 1.4s;
+  }
+
+  .main div:nth-child(3) {
+  animation-delay: .8s;
+  }
+
+  .main div:nth-child(4) {
+  animation-delay: 1.25s;
   }
 
 @keyframes bounce {
-    0% {
-    transform: scale(1);
-    }
-    10% {
-      transform: scale(.98);
-    }
-    20% {
-      transform: scale(.96);
-    }
-    30% {
-      transform: scale(.98);
-    }
-    40% {
-      transform: scale(1);
-    }
-    50% {
-      transform: scale(1);
-    }
-    60% {
-      transform: scale(.98);
-    }
-    70% {
-      transform: scale(.96);
-    }
-    80% {
-      transform: scale(.98);
-    }
-    90% {
-      transform: scale(1);
-    }
-    100% {
-      transform: scale(1);
-    }
+  0% {
+  transform: scale(1);
   }
-
-footer {
-    grid-area: footer;
+  10% {
+    transform: scale(.98);
+  }
+  20% {
+    transform: scale(.96);
+  }
+  30% {
+    transform: scale(.98);
+  }
+  40% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1);
+  }
+  60% {
+    transform: scale(.98);
+  }
+  70% {
+    transform: scale(.96);
+  }
+  80% {
+    transform: scale(.98);
+  }
+  90% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 .page-wrapper {
-    display: block;
+  display: block;
 }
 
 @media only screen and (min-width: 44.375em) {
-    .summary {
-        margin: 1rem 0;
+  .summary {
+      margin: 1rem 0;
+  }
+  .summary p:nth-child(2) {
+      margin-top: .3rem;
     }
-    .summary p:nth-child(2) {
-        margin-top: .3rem;
-      }
-    .intro h1 {
-        font-size: 2rem;
-    }
+  .intro h1 {
+      font-size: 2rem;
+  }
+}
+
+footer {
+grid-area: footer;
+padding: 10px;
+display: flex;
+flex-direction: row;
+justify-content: space-evenly;
+}
+
+footer a::before {
+content: url(images/flying_score.svg);
+}
+
+footer a::after {
+content: url(images/flying_score.svg);
+}
+
+footer a {
+font-size: 24px;
+}
+
+.sidebar {
+
+      background-color: $color-5;
+      border-style: inset;
+      border-width: thin medium;
+      border-color: $color-2;
+      border-radius: 20px;
+      background-image: linear-gradient(to left, $color-4, $color-7);
+      font-size: 12px;
+      padding-right: 2rem;
+      
+}
+
+.sidebar::before {
+background-image: url(images/notes123.png);
+content: "";
+background-size: contain;
+background-repeat: no-repeat;
+width: 50%;
+height: 215px;
+display: block;
+margin: auto;
+margin-top: 2rem;
+margin-bottom: 2rem;
+}
+
+.sidebar::after {
+background-image: url(images/notes123.png);
+content: "";
+background-size: contain;
+background-repeat: no-repeat;
+width: 50%;
+height: 215px;
+display: block;
+margin: auto;
+}
+
+ul {
+list-style: none;
+padding-right: 1em;
+}
+
+ul li {
+padding-bottom: 2em;
+text-decoration: none;
+}
+
+li {
+&:before {
+content: '';
+display: inline-block;
+height: 1em;
+width: 1em;
+background-image: url(images/primary-cdaudio-mount.svg);
+background-size: contain;
+background-repeat: no-repeat;
+margin-right:0.5em; 
+}
+}
+
+.preamble h3::before, .participation h3::before, .requirements h3::before {
+@include piano-image;
 }

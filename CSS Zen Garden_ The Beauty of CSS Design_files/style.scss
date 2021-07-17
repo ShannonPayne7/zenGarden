@@ -1,20 +1,20 @@
-@import "smallview";
-@import "largeview";
 
 // color palette - these colors will be the color swatches of the Colors section
 
 $color-1: #0f5057; // Midnight Green - Action color
 $color-2: #0d1821; // Rich Black
 $color-3: #94261e; // Burnt Umber
-$color-4: #909590; // Spanish Gray
+$color-4: #caceca; // Spanish Gray
 $color-5: #FFFFF0; // Ivory
 $color-6: #683431; // Wine
 
 // additional colors
-
+$color-7: whitesmoke; //white piano keys
+$color-8: #d64338;
 $success: $color-4; // Spanish Gray
 $alert: $color-3; // Burnt Umber
 
+//fonts
 @font-face {
   font-family: "Harrington";
   src: url("images/harrington.ttf");
@@ -23,6 +23,13 @@ $alert: $color-3; // Burnt Umber
 $primary-font: 'Merriweather', serif;
 $secondary-font: 'Harrington', sans-serif;
 $body-font: 'Helvetica', sans-serif;
+
+@import "smallview";
+@import "largeview";
+
+body {
+  background-color: $color-4;
+}
 
 .page-wrapper {
   font-family: $body-font;
@@ -43,33 +50,6 @@ $body-font: 'Helvetica', sans-serif;
 
 .summary p:nth-child(2) {
   font-size: .8rem;
-}
-
-.sidebar {
-  background: ivory;
-  border-radius: 10px;
-  border: 5px solid $color-3;
-}
-ul {
-    list-style: none;
-    padding-right: 1em;
-}
-
-ul li {
-  padding-bottom: 0.5em;
-  text-decoration: none;
-}
-li {
-  &:before {
-   content: '';
-   display: inline-block;
-    height: 1em;
-    width: 1em;
-    background-image: url(images/primary-cdaudio-mount.svg);
-    background-size: contain;
-    background-repeat: no-repeat;
-    margin-right:0.5em; 
-  }
 }
 
 .wrapper h3 {
@@ -125,3 +105,17 @@ a:active {
     color: $color-4;
   }
 }
+
+//font sizes, colors, and images for h3 headers
+h3 {
+  font-family: $secondary-font;
+  color: $color-8;
+  font-size: 1.5rem;
+}
+
+.preamble h3, .participation h3, .requirements h3 {
+  color: $color-3
+}
+
+
+
